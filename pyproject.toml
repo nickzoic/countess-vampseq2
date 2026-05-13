@@ -1,0 +1,55 @@
+[project]
+name = 'countess-vampseq2'
+dynamic = ['version']
+readme = "README.md"
+authors = [
+    { name = "Nick Moore", email="nick@zoic.org" },
+]
+maintainers = [
+    { name = "Nick Moore", email="nick@zoic.org" },
+]
+license = { text = "BSD-3-Clause" }
+description = "CountESS Plugin VAMPseq2"
+requires-python = ">=3.10"
+classifiers = [
+    'Development Status :: 3 - Alpha',
+    'Intended Audience :: Science/Research',
+    'Operating System :: OS Independent',
+    'Topic :: Scientific/Engineering :: Bio-Informatics',
+]
+dependencies = [
+    'countess~=0.1.21',
+    'scipy~=1.17.1',
+]
+
+[project.optional-dependencies]
+dev = [
+    'countess[dev]~=0.1.21',
+    'scipy-stubs~=1.17.1',
+]
+gui = [
+    'countess[gui]~=0.1.21',
+]
+
+[project.entry-points.countess_plugins]
+vampseq2 = "countess_vampseq2:VampSeq2Plugin"
+
+[tool.setuptools.dynamic]
+version = { attr = "countess_vampseq2.VERSION" }
+readme = { file = "README.md", content-type="text/markdown" }
+
+[tool.pylint]
+load-plugins = "pylint.extensions.bad_builtin"
+bad-functions = ['print']
+disable = [
+    "consider-using-f-string",
+    "consider-using-with",
+    "missing-function-docstring",
+    "unused-argument",
+    "invalid-name",
+    "no-else-return",
+]
+max-line-length = 120
+
+[tool.black]
+line-length = 120
